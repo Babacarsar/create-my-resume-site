@@ -78,18 +78,20 @@ interface Certification {
   name: string;
   issuer: string;
   date: string;
+  /** Iconify icon for the issuer */
+  icon: string;
 }
 
 const certifications: Certification[] = [
-  { name: "AWS Academy Graduate – Data Engineering", issuer: "Amazon Web Services (AWS)", date: "Juil. 2025" },
-  { name: "Devenir un expert de Power BI – La formation complète", issuer: "Udemy", date: "Févr. 2025" },
-  { name: "Excel : Analyse de données avec Power Query (Microsoft 365)", issuer: "Birdify – LMSAFP", date: "Déc. 2024" },
-  { name: "Dataiku ML Practitioner", issuer: "Dataiku", date: "Déc. 2024" },
-  { name: "Dataiku Advanced Designer", issuer: "Dataiku", date: "Nov. 2024" },
-  { name: "Dataiku Core Designer", issuer: "Dataiku", date: "Nov. 2024" },
-  { name: "Apprendre l'analyse des données – Partie 2 : Étendre et appliquer les connaissances", issuer: "Birdify – LMSAFP", date: "Nov. 2024" },
-  { name: "Apprendre l'analyse des données : Fondements", issuer: "LinkedIn", date: "Nov. 2024" },
-  { name: "Les fondements du Data Engineering", issuer: "Birdify – LMSAFP", date: "2024" },
+  { name: "AWS Academy Graduate – Data Engineering", issuer: "Amazon Web Services (AWS)", date: "Juil. 2025", icon: "logos:aws" },
+  { name: "Devenir un expert de Power BI – La formation complète", issuer: "Udemy", date: "Févr. 2025", icon: "logos:udemy" },
+  { name: "Excel : Analyse de données avec Power Query (Microsoft 365)", issuer: "Birdify – LMSAFP", date: "Déc. 2024", icon: "simple-icons:microsoftexcel" },
+  { name: "Dataiku ML Practitioner", issuer: "Dataiku", date: "Déc. 2024", icon: "simple-icons:dataiku" },
+  { name: "Dataiku Advanced Designer", issuer: "Dataiku", date: "Nov. 2024", icon: "simple-icons:dataiku" },
+  { name: "Dataiku Core Designer", issuer: "Dataiku", date: "Nov. 2024", icon: "simple-icons:dataiku" },
+  { name: "Apprendre l'analyse des données – Partie 2 : Étendre et appliquer les connaissances", issuer: "Birdify – LMSAFP", date: "Nov. 2024", icon: "simple-icons:microsoftexcel" },
+  { name: "Apprendre l'analyse des données : Fondements", issuer: "LinkedIn", date: "Nov. 2024", icon: "logos:linkedin-icon" },
+  { name: "Les fondements du Data Engineering", issuer: "Birdify – LMSAFP", date: "2024", icon: "simple-icons:microsoftexcel" },
 ];
 
 const softSkills = ["Capacité d'écoute", "Esprit d'analyse", "Autonomie", "Savoir être"];
@@ -166,20 +168,36 @@ const Skills = () => {
               </span>
             </div>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {certifications.map((c, i) => (
-                <li
-                  key={i}
-                  className="group/cert flex gap-3 p-3 rounded-lg bg-secondary/30 border border-border/50 hover:border-accent/40 hover:bg-secondary/50 transition-all duration-300"
-                >
-                  <span className="text-accent mt-0.5 shrink-0 group-hover/cert:scale-110 transition-transform">◆</span>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm text-foreground/90 leading-snug">{c.name}</p>
-                    <p className="text-[11px] font-mono text-muted-foreground mt-1">
-                      {c.issuer} · {c.date}
-                    </p>
-                  </div>
-                </li>
-              ))}
+              {certifications.map((c, i) => {
+                const isMonochrome =
+                  c.icon.startsWith("simple-icons:") ||
+                  c.icon.startsWith("devicon:") ||
+                  c.icon.startsWith("vscode-icons:");
+                const iconSrc = isMonochrome
+                  ? `https://api.iconify.design/${c.icon}.svg?color=%2314b8a6`
+                  : `https://api.iconify.design/${c.icon}.svg`;
+                return (
+                  <li
+                    key={i}
+                    className="group/cert flex gap-3 p-3 rounded-lg bg-secondary/30 border border-border/50 hover:border-accent/40 hover:bg-secondary/50 transition-all duration-300"
+                  >
+                    <div className="shrink-0 w-9 h-9 rounded-md bg-background/60 border border-border/60 flex items-center justify-center group-hover/cert:border-accent/40 transition-colors">
+                      <img
+                        src={iconSrc}
+                        alt={c.issuer}
+                        loading="lazy"
+                        className="w-5 h-5 object-contain"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm text-foreground/90 leading-snug">{c.name}</p>
+                      <p className="text-[11px] font-mono text-muted-foreground mt-1">
+                        {c.issuer} · {c.date}
+                      </p>
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
           </AnimatedSection>
 
