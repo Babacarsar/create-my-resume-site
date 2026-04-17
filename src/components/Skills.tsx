@@ -1,4 +1,4 @@
-import { Award, Users, Globe } from "lucide-react";
+import { Award, Users, Globe, ExternalLink } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 
 
@@ -80,17 +80,43 @@ interface Certification {
   date: string;
   /** Iconify icon for the issuer */
   icon: string;
+  /** Optional verification / credential URL */
+  url?: string;
 }
 
 const certifications: Certification[] = [
-  { name: "AWS Academy Graduate – Data Engineering", issuer: "Amazon Web Services (AWS)", date: "Juil. 2025", icon: "logos:aws" },
-  { name: "Devenir un expert de Power BI – La formation complète", issuer: "Udemy", date: "Févr. 2025", icon: "logos:udemy" },
+  {
+    name: "AWS Academy Graduate – Data Engineering",
+    issuer: "Amazon Web Services (AWS)",
+    date: "Juil. 2025",
+    icon: "logos:aws",
+    url: "https://www.credly.com/badges/3d71ade0-6cc7-4728-a09e-53ff7a0a7b0d/linked_in_profile",
+  },
+  {
+    name: "Devenir un expert de Power BI – La formation complète",
+    issuer: "Udemy",
+    date: "Févr. 2025",
+    icon: "logos:udemy",
+    url: "https://www.udemy.com/certificate/UC-b1419a6e-5e1e-4fc2-b1a1-3da8a089a717/",
+  },
   { name: "Excel : Analyse de données avec Power Query (Microsoft 365)", issuer: "Birdify – LMSAFP", date: "Déc. 2024", icon: "simple-icons:microsoftexcel" },
-  { name: "Dataiku ML Practitioner", issuer: "Dataiku", date: "Déc. 2024", icon: "simple-icons:dataiku" },
+  {
+    name: "Dataiku ML Practitioner",
+    issuer: "Dataiku",
+    date: "Déc. 2024",
+    icon: "simple-icons:dataiku",
+    url: "https://verify.skilljar.com/c/ht3asax326xx",
+  },
   { name: "Dataiku Advanced Designer", issuer: "Dataiku", date: "Nov. 2024", icon: "simple-icons:dataiku" },
   { name: "Dataiku Core Designer", issuer: "Dataiku", date: "Nov. 2024", icon: "simple-icons:dataiku" },
   { name: "Apprendre l'analyse des données – Partie 2 : Étendre et appliquer les connaissances", issuer: "Birdify – LMSAFP", date: "Nov. 2024", icon: "simple-icons:microsoftexcel" },
-  { name: "Apprendre l'analyse des données : Fondements", issuer: "LinkedIn", date: "Nov. 2024", icon: "logos:linkedin-icon" },
+  {
+    name: "Apprendre l'analyse des données : Fondements",
+    issuer: "LinkedIn",
+    date: "Nov. 2024",
+    icon: "logos:linkedin-icon",
+    url: "https://www.linkedin.com/learning/certificates/f628c743103526e45cfbe45bd0ecc497806f65841edea161cbd7f7efc3f85226",
+  },
   { name: "Les fondements du Data Engineering", issuer: "Birdify – LMSAFP", date: "2024", icon: "simple-icons:microsoftexcel" },
 ];
 
@@ -175,11 +201,9 @@ const Skills = () => {
               const iconSrc = isMonochrome
                 ? `https://api.iconify.design/${c.icon}.svg?color=%2314b8a6`
                 : `https://api.iconify.design/${c.icon}.svg`;
-              return (
-                <li
-                  key={i}
-                  className="group/cert flex gap-3 p-3 rounded-lg bg-secondary/30 border border-border/50 hover:border-accent/40 hover:bg-secondary/50 transition-all duration-300"
-                >
+
+              const content = (
+                <>
                   <div className="shrink-0 w-9 h-9 rounded-md bg-background/60 border border-border/60 flex items-center justify-center group-hover/cert:border-accent/40 transition-colors">
                     <img
                       src={iconSrc}
@@ -189,11 +213,37 @@ const Skills = () => {
                     />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm text-foreground/90 leading-snug">{c.name}</p>
+                    <p className="text-sm text-foreground/90 leading-snug flex items-start gap-1.5">
+                      <span className="flex-1">{c.name}</span>
+                      {c.url && (
+                        <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover/cert:text-accent shrink-0 mt-0.5 transition-colors" />
+                      )}
+                    </p>
                     <p className="text-[11px] font-mono text-muted-foreground mt-1">
                       {c.issuer} · {c.date}
                     </p>
                   </div>
+                </>
+              );
+
+              const baseClass =
+                "group/cert flex gap-3 p-3 rounded-lg bg-secondary/30 border border-border/50 hover:border-accent/40 hover:bg-secondary/50 transition-all duration-300";
+
+              return (
+                <li key={i}>
+                  {c.url ? (
+                    <a
+                      href={c.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Vérifier la certification ${c.name}`}
+                      className={`${baseClass} cursor-pointer`}
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    <div className={baseClass}>{content}</div>
+                  )}
                 </li>
               );
             })}
