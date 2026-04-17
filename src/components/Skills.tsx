@@ -93,22 +93,20 @@ const SkillLogo = ({ item }: { item: SkillItem }) => {
     : `https://api.iconify.design/${item.icon}.svg`;
 
   return (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <div className="group/logo relative flex items-center justify-center aspect-square rounded-xl bg-gradient-to-br from-secondary/60 to-secondary/20 border border-border/60 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_24px_-12px_hsl(var(--primary)/0.6)] cursor-default overflow-hidden">
-          <div className="absolute inset-0 opacity-0 group-hover/logo:opacity-100 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 transition-opacity duration-300" />
-          <img
-            src={src}
-            alt={item.name}
-            loading="lazy"
-            className="relative w-9 h-9 object-contain transition-transform duration-300 group-hover/logo:scale-110 drop-shadow-[0_2px_8px_hsl(var(--primary)/0.25)]"
-          />
-        </div>
-      </TooltipTrigger>
-      <TooltipContent side="top" className="font-mono text-xs">
+    <div className="group/logo flex flex-col items-center gap-2">
+      <div className="relative flex items-center justify-center w-full aspect-square rounded-xl bg-gradient-to-br from-secondary/60 to-secondary/20 border border-border/60 group-hover/logo:border-primary/50 transition-all duration-300 group-hover/logo:-translate-y-1 group-hover/logo:shadow-[0_8px_24px_-12px_hsl(var(--primary)/0.6)] overflow-hidden">
+        <div className="absolute inset-0 opacity-0 group-hover/logo:opacity-100 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 transition-opacity duration-300" />
+        <img
+          src={src}
+          alt={item.name}
+          loading="lazy"
+          className="relative w-9 h-9 object-contain transition-transform duration-300 group-hover/logo:scale-110 drop-shadow-[0_2px_8px_hsl(var(--primary)/0.25)]"
+        />
+      </div>
+      <span className="font-mono text-[10px] text-muted-foreground text-center leading-tight group-hover/logo:text-primary transition-colors duration-300">
         {item.name}
-      </TooltipContent>
-    </Tooltip>
+      </span>
+    </div>
   );
 };
 
