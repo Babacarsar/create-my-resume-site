@@ -25,7 +25,7 @@ const Contact = () => {
           </a>
 
           <div className="flex justify-center gap-6 mt-12">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+            <a href="https://www.linkedin.com/in/babacar-sarr/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
               <Linkedin className="w-6 h-6" />
             </a>
             <a href="https://github.com/babacarsar" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
