@@ -40,7 +40,11 @@ const Hero = () => {
               <TypingText text="Data Engineer Full Stack" speed={90} startDelay={400} />
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8 max-w-xl animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              Data Engineer Full Stack — de l'ingestion à la visualisation. Pipelines ETL, Big Data et Cloud AWS, APIs et dashboards. Spécialisé en Python, SQL, Spark, AWS et Power BI.
+              Data Engineer <span className="text-primary font-semibold">Full Stack</span> — je couvre toute la chaîne de la donnée :
+              <span className="text-foreground"> back data</span> (pipelines ETL/ELT, Spark, Airflow, data lakes AWS S3/Redshift),
+              <span className="text-foreground"> APIs</span> (FastAPI, REST, microservices Dockerisés) et
+              <span className="text-foreground"> dashboards</span> (Power BI, Streamlit, visualisations interactives).
+              De l'ingestion brute à la décision métier, je livre des produits data end-to-end.
             </p>
 
             {/* CTA: Download CV */}
