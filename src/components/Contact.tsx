@@ -42,9 +42,13 @@ const Contact = () => {
 
           {/* Status badges */}
           <div className="flex flex-wrap justify-center gap-3 mb-10">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 text-primary text-sm font-mono border border-primary/30">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              Disponible pour CDI dès Sept. 2026
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary text-secondary-foreground text-sm font-mono border border-border">
+              <MapPin className="w-4 h-4 text-primary" />
+              Île-de-France · Remote OK
+            </span>
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary text-secondary-foreground text-sm font-mono border border-border">
+              <CalendarClock className="w-4 h-4 text-primary" />
+              Réponse sous 24h
             </span>
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary text-secondary-foreground text-sm font-mono border border-border">
               <MapPin className="w-4 h-4 text-primary" />
