@@ -1,6 +1,6 @@
 import { Award, Users, Globe } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+
 
 interface SkillItem {
   name: string;
@@ -121,29 +121,27 @@ const Skills = () => {
         </div>
 
         {/* Technical skills grid with brand logos */}
-        <TooltipProvider delayDuration={150}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
-            {skillGroups.map((group, i) => (
-              <AnimatedSection
-                key={i}
-                delay={i * 0.08}
-                className="card-gradient rounded-xl p-6 border border-border hover:border-primary/30 hover:glow-primary transition-all duration-500"
-              >
-                <div className="flex items-center justify-between mb-5">
-                  <h3 className="font-semibold text-foreground tracking-tight">{group.title}</h3>
-                  <span className="font-mono text-[10px] text-muted-foreground">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                </div>
-                <div className="grid grid-cols-4 sm:grid-cols-5 gap-2.5">
-                  {group.items.map((item, j) => (
-                    <SkillLogo key={j} item={item} />
-                  ))}
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </TooltipProvider>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+          {skillGroups.map((group, i) => (
+            <AnimatedSection
+              key={i}
+              delay={i * 0.08}
+              className="card-gradient rounded-xl p-6 border border-border hover:border-primary/30 hover:glow-primary transition-all duration-500"
+            >
+              <div className="flex items-center justify-between mb-5">
+                <h3 className="font-semibold text-foreground tracking-tight">{group.title}</h3>
+                <span className="font-mono text-[10px] text-muted-foreground">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <div className="grid grid-cols-4 sm:grid-cols-5 gap-2.5">
+                {group.items.map((item, j) => (
+                  <SkillLogo key={j} item={item} />
+                ))}
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
 
         {/* Certifications & Soft skills */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
