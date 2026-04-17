@@ -176,9 +176,7 @@ const Projects = () => {
                 <ul className="space-y-2.5 mb-6">
                   {project.tasks.map((task, j) => (
                     <li key={j} className="flex gap-3 text-sm text-muted-foreground/90 leading-relaxed">
-                      <span className="font-mono text-primary/70 text-xs mt-1 shrink-0">
-                        {String(j + 1).padStart(2, "0")}
-                      </span>
+                      <span className="text-primary/70 mt-1.5 shrink-0">▸</span>
                       <span>{task}</span>
                     </li>
                   ))}
