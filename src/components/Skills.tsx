@@ -1,12 +1,11 @@
 import { Award, Users, Globe } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface SkillItem {
   name: string;
-  /** simple-icons slug. See https://simpleicons.org */
-  slug: string;
-  /** Brand color (hex without #). Falls back to primary. */
-  color?: string;
+  /** Iconify icon identifier, e.g. "logos:aws" */
+  icon: string;
 }
 
 interface SkillGroup {
@@ -18,59 +17,59 @@ const skillGroups: SkillGroup[] = [
   {
     title: "Bases de données",
     items: [
-      { name: "PostgreSQL", slug: "postgresql", color: "4169E1" },
-      { name: "Microsoft SQL Server", slug: "microsoftsqlserver", color: "CC2927" },
-      { name: "MySQL", slug: "mysql", color: "4479A1" },
-      { name: "DynamoDB", slug: "amazondynamodb", color: "4053D6" },
-      { name: "SQLAlchemy", slug: "sqlalchemy", color: "D71F00" },
+      { name: "PostgreSQL", icon: "logos:postgresql" },
+      { name: "SQL Server", icon: "devicon:microsoftsqlserver" },
+      { name: "MySQL", icon: "logos:mysql" },
+      { name: "DynamoDB", icon: "logos:aws-dynamodb" },
+      { name: "SQLAlchemy", icon: "devicon:sqlalchemy" },
     ],
   },
   {
     title: "Cloud AWS",
     items: [
-      { name: "AWS", slug: "amazonwebservices", color: "FF9900" },
-      { name: "S3", slug: "amazons3", color: "569A31" },
-      { name: "Lambda", slug: "awslambda", color: "FF9900" },
-      { name: "Glue", slug: "awsglue", color: "C925D1" },
-      { name: "EC2", slug: "amazonec2", color: "FF9900" },
-      { name: "QuickSight", slug: "amazonquicksight", color: "FAB907" },
+      { name: "AWS", icon: "logos:aws" },
+      { name: "S3", icon: "logos:aws-s3" },
+      { name: "Lambda", icon: "logos:aws-lambda" },
+      { name: "Glue", icon: "logos:aws-glue" },
+      { name: "EC2", icon: "logos:aws-ec2" },
+      { name: "QuickSight", icon: "logos:aws-quicksight" },
     ],
   },
   {
     title: "Langages",
     items: [
-      { name: "Python", slug: "python", color: "3776AB" },
-      { name: "SQL", slug: "mysql", color: "4479A1" },
-      { name: "JavaScript", slug: "javascript", color: "F7DF1E" },
+      { name: "Python", icon: "logos:python" },
+      { name: "SQL", icon: "vscode-icons:file-type-sql" },
+      { name: "JavaScript", icon: "logos:javascript" },
     ],
   },
   {
     title: "Backend / API",
     items: [
-      { name: "FastAPI", slug: "fastapi", color: "009688" },
-      { name: "Flask", slug: "flask", color: "E5E7EB" },
-      { name: "REST API", slug: "openapiinitiative", color: "6BA539" },
-      { name: "JWT", slug: "jsonwebtokens", color: "D63AFF" },
+      { name: "FastAPI", icon: "logos:fastapi-icon" },
+      { name: "Flask", icon: "logos:flask" },
+      { name: "REST API", icon: "logos:openapi-icon" },
+      { name: "JWT", icon: "logos:jwt-icon" },
     ],
   },
   {
     title: "Data Engineering",
     items: [
-      { name: "Apache Spark", slug: "apachespark", color: "E25A1C" },
-      { name: "Databricks", slug: "databricks", color: "FF3621" },
-      { name: "Apache Airflow", slug: "apacheairflow", color: "017CEE" },
-      { name: "Power BI", slug: "powerbi", color: "F2C811" },
-      { name: "QGIS", slug: "qgis", color: "589632" },
+      { name: "Apache Spark", icon: "logos:apache-spark" },
+      { name: "Databricks", icon: "simple-icons:databricks" },
+      { name: "Apache Airflow", icon: "logos:airflow-icon" },
+      { name: "Power BI", icon: "logos:microsoft-power-bi" },
+      { name: "QGIS", icon: "simple-icons:qgis" },
     ],
   },
   {
     title: "DevOps",
     items: [
-      { name: "Git", slug: "git", color: "F05032" },
-      { name: "GitHub", slug: "github", color: "E5E7EB" },
-      { name: "Docker", slug: "docker", color: "2496ED" },
-      { name: "Nginx", slug: "nginx", color: "009639" },
-      { name: "Linux", slug: "linux", color: "FCC624" },
+      { name: "Git", icon: "logos:git-icon" },
+      { name: "GitHub", icon: "logos:github-icon" },
+      { name: "Docker", icon: "logos:docker-icon" },
+      { name: "Nginx", icon: "logos:nginx" },
+      { name: "Linux", icon: "logos:linux-tux" },
     ],
   },
 ];
@@ -83,24 +82,33 @@ const certifications = [
 const softSkills = ["Capacité d'écoute", "Esprit d'analyse", "Autonomie", "Savoir être"];
 
 const SkillLogo = ({ item }: { item: SkillItem }) => {
-  const color = item.color ?? "14B8A6";
-  const src = `https://cdn.simpleicons.org/${item.slug}/${color}`;
+  // Iconify renders monochrome icons (simple-icons, devicon families) using currentColor.
+  // We tint them with the primary accent so they harmonize with the dark theme.
+  const isMonochrome =
+    item.icon.startsWith("simple-icons:") ||
+    item.icon.startsWith("devicon:") ||
+    item.icon.startsWith("vscode-icons:");
+  const src = isMonochrome
+    ? `https://api.iconify.design/${item.icon}.svg?color=%2314b8a6`
+    : `https://api.iconify.design/${item.icon}.svg`;
+
   return (
-    <div className="group/logo flex flex-col items-center gap-2 p-3 rounded-lg bg-secondary/40 border border-border hover:border-primary/40 hover:bg-secondary/70 transition-all duration-300 hover:-translate-y-0.5">
-      <img
-        src={src}
-        alt={item.name}
-        loading="lazy"
-        className="w-8 h-8 object-contain transition-transform duration-300 group-hover/logo:scale-110"
-        onError={(e) => {
-          // Fallback : hide broken icon and show initials
-          (e.currentTarget as HTMLImageElement).style.display = "none";
-        }}
-      />
-      <span className="text-[10px] font-mono text-muted-foreground text-center leading-tight">
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <div className="group/logo relative flex items-center justify-center aspect-square rounded-xl bg-gradient-to-br from-secondary/60 to-secondary/20 border border-border/60 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_24px_-12px_hsl(var(--primary)/0.6)] cursor-default overflow-hidden">
+          <div className="absolute inset-0 opacity-0 group-hover/logo:opacity-100 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 transition-opacity duration-300" />
+          <img
+            src={src}
+            alt={item.name}
+            loading="lazy"
+            className="relative w-9 h-9 object-contain transition-transform duration-300 group-hover/logo:scale-110 drop-shadow-[0_2px_8px_hsl(var(--primary)/0.25)]"
+          />
+        </div>
+      </TooltipTrigger>
+      <TooltipContent side="top" className="font-mono text-xs">
         {item.name}
-      </span>
-    </div>
+      </TooltipContent>
+    </Tooltip>
   );
 };
 
@@ -115,27 +123,29 @@ const Skills = () => {
         </div>
 
         {/* Technical skills grid with brand logos */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
-          {skillGroups.map((group, i) => (
-            <AnimatedSection
-              key={i}
-              delay={i * 0.08}
-              className="card-gradient rounded-xl p-6 border border-border hover:border-primary/30 hover:glow-primary transition-all duration-500"
-            >
-              <div className="flex items-center justify-between mb-5">
-                <h3 className="font-semibold text-foreground tracking-tight">{group.title}</h3>
-                <span className="font-mono text-[10px] text-muted-foreground">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-              </div>
-              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2.5">
-                {group.items.map((item, j) => (
-                  <SkillLogo key={j} item={item} />
-                ))}
-              </div>
-            </AnimatedSection>
-          ))}
-        </div>
+        <TooltipProvider delayDuration={150}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+            {skillGroups.map((group, i) => (
+              <AnimatedSection
+                key={i}
+                delay={i * 0.08}
+                className="card-gradient rounded-xl p-6 border border-border hover:border-primary/30 hover:glow-primary transition-all duration-500"
+              >
+                <div className="flex items-center justify-between mb-5">
+                  <h3 className="font-semibold text-foreground tracking-tight">{group.title}</h3>
+                  <span className="font-mono text-[10px] text-muted-foreground">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <div className="grid grid-cols-4 sm:grid-cols-5 gap-2.5">
+                  {group.items.map((item, j) => (
+                    <SkillLogo key={j} item={item} />
+                  ))}
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </TooltipProvider>
 
         {/* Certifications & Soft skills */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
