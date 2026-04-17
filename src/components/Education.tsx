@@ -20,10 +20,9 @@ const Education = () => {
   return (
     <section id="education" className="py-24 relative">
       <div className="container mx-auto px-6">
-        <div className="flex items-center gap-3 mb-16">
-          <span className="font-mono text-primary text-sm">05.</span>
-          <h2 className="text-3xl md:text-4xl font-bold">Formation</h2>
-          <div className="flex-1 h-px bg-border ml-4" />
+        <div className="flex items-center gap-4 mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Formation</h2>
+          <div className="flex-1 h-px bg-border" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
