@@ -1,6 +1,13 @@
 import { Mail, Phone, MapPin, Linkedin, Github, ArrowUpRight } from "lucide-react";
 
 const Contact = () => {
+  const linkedInUrl = "https://www.linkedin.com/in/babacar-sarr-a3888a247/";
+
+  const openExternalLink = (url: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <section id="contact" className="py-24 relative">
       <div className="container mx-auto px-6">
@@ -25,7 +32,7 @@ const Contact = () => {
           </a>
 
           <div className="flex justify-center gap-6 mt-12">
-            <a href="https://www.linkedin.com/in/babacar-sarr-a3888a247/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+            <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" onClick={openExternalLink(linkedInUrl)} className="text-muted-foreground hover:text-primary transition-colors" aria-label="Profil LinkedIn de Babacar Sarr">
               <Linkedin className="w-6 h-6" />
             </a>
             <a href="https://github.com/babacarsar" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
