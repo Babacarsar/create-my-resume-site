@@ -157,71 +157,70 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Certifications & Soft skills */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-          <AnimatedSection className="card-gradient rounded-xl p-6 border border-border lg:col-span-2">
-            <div className="flex items-center gap-3 mb-5">
-              <Award className="w-5 h-5 text-accent" />
-              <h3 className="font-semibold text-foreground">Certifications</h3>
-              <span className="ml-auto font-mono text-[10px] text-muted-foreground">
-                {String(certifications.length).padStart(2, "0")}
-              </span>
-            </div>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {certifications.map((c, i) => {
-                const isMonochrome =
-                  c.icon.startsWith("simple-icons:") ||
-                  c.icon.startsWith("devicon:") ||
-                  c.icon.startsWith("vscode-icons:");
-                const iconSrc = isMonochrome
-                  ? `https://api.iconify.design/${c.icon}.svg?color=%2314b8a6`
-                  : `https://api.iconify.design/${c.icon}.svg`;
-                return (
-                  <li
-                    key={i}
-                    className="group/cert flex gap-3 p-3 rounded-lg bg-secondary/30 border border-border/50 hover:border-accent/40 hover:bg-secondary/50 transition-all duration-300"
-                  >
-                    <div className="shrink-0 w-9 h-9 rounded-md bg-background/60 border border-border/60 flex items-center justify-center group-hover/cert:border-accent/40 transition-colors">
-                      <img
-                        src={iconSrc}
-                        alt={c.issuer}
-                        loading="lazy"
-                        className="w-5 h-5 object-contain"
-                      />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm text-foreground/90 leading-snug">{c.name}</p>
-                      <p className="text-[11px] font-mono text-muted-foreground mt-1">
-                        {c.issuer} · {c.date}
-                      </p>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.1} className="card-gradient rounded-xl p-6 border border-border">
-            <div className="flex items-center gap-3 mb-4">
-              <Users className="w-5 h-5 text-accent" />
-              <h3 className="font-semibold text-foreground">Soft Skills</h3>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {softSkills.map((s, i) => (
-                <span
+        {/* Certifications (full width) */}
+        <AnimatedSection className="card-gradient rounded-xl p-6 border border-border mb-5">
+          <div className="flex items-center gap-3 mb-5">
+            <Award className="w-5 h-5 text-accent" />
+            <h3 className="font-semibold text-foreground">Certifications</h3>
+            <span className="ml-auto font-mono text-[10px] text-muted-foreground">
+              {String(certifications.length).padStart(2, "0")}
+            </span>
+          </div>
+          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+            {certifications.map((c, i) => {
+              const isMonochrome =
+                c.icon.startsWith("simple-icons:") ||
+                c.icon.startsWith("devicon:") ||
+                c.icon.startsWith("vscode-icons:");
+              const iconSrc = isMonochrome
+                ? `https://api.iconify.design/${c.icon}.svg?color=%2314b8a6`
+                : `https://api.iconify.design/${c.icon}.svg`;
+              return (
+                <li
                   key={i}
-                  className="px-3 py-1.5 rounded-md bg-accent/10 text-accent text-xs font-mono border border-accent/20"
+                  className="group/cert flex gap-3 p-3 rounded-lg bg-secondary/30 border border-border/50 hover:border-accent/40 hover:bg-secondary/50 transition-all duration-300"
                 >
-                  {s}
-                </span>
-              ))}
-            </div>
-            <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
-              <Globe className="w-4 h-4 text-primary" />
-              <span>Anglais — B2</span>
-            </div>
-          </AnimatedSection>
-        </div>
+                  <div className="shrink-0 w-9 h-9 rounded-md bg-background/60 border border-border/60 flex items-center justify-center group-hover/cert:border-accent/40 transition-colors">
+                    <img
+                      src={iconSrc}
+                      alt={c.issuer}
+                      loading="lazy"
+                      className="w-5 h-5 object-contain"
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-foreground/90 leading-snug">{c.name}</p>
+                    <p className="text-[11px] font-mono text-muted-foreground mt-1">
+                      {c.issuer} · {c.date}
+                    </p>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </AnimatedSection>
+
+        {/* Soft skills (next row, full width) */}
+        <AnimatedSection delay={0.1} className="card-gradient rounded-xl p-6 border border-border">
+          <div className="flex items-center gap-3 mb-4">
+            <Users className="w-5 h-5 text-accent" />
+            <h3 className="font-semibold text-foreground">Soft Skills</h3>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {softSkills.map((s, i) => (
+              <span
+                key={i}
+                className="px-3 py-1.5 rounded-md bg-accent/10 text-accent text-xs font-mono border border-accent/20"
+              >
+                {s}
+              </span>
+            ))}
+          </div>
+          <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
+            <Globe className="w-4 h-4 text-primary" />
+            <span>Anglais — B2</span>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );
