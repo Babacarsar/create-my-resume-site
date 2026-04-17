@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, Linkedin, Github, ArrowUpRight } from "lucide-react";
+import AnimatedSection from "./AnimatedSection";
 
 const Contact = () => {
   const linkedInUrl = "https://www.linkedin.com/in/babacar-sarr-a3888a247/";
@@ -17,7 +18,7 @@ const Contact = () => {
           <div className="flex-1 h-px bg-border ml-4" />
         </div>
 
-        <div className="max-w-xl mx-auto text-center">
+        <AnimatedSection className="max-w-xl mx-auto text-center">
           <p className="text-muted-foreground mb-10 leading-relaxed">
             Actuellement en alternance, je reste ouvert aux échanges et opportunités. N'hésitez pas à me contacter !
           </p>
@@ -39,7 +40,7 @@ const Contact = () => {
               <Github className="w-6 h-6" />
             </a>
           </div>
-        </div>
+        </AnimatedSection>
       </div>
 
       {/* Footer */}

@@ -1,4 +1,5 @@
 import { Database, Cloud, Code, BarChart3, Server, GitBranch, Users, Award, Globe } from "lucide-react";
+import AnimatedSection from "./AnimatedSection";
 
 interface SkillGroup {
   icon: React.ReactNode;
@@ -35,7 +36,7 @@ const Skills = () => {
         {/* Technical skills grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
           {skillGroups.map((group, i) => (
-            <div key={i} className="card-gradient rounded-xl p-6 border border-border hover:border-primary/30 hover:glow-primary transition-all duration-500 group">
+            <AnimatedSection key={i} delay={i * 0.08} className="card-gradient rounded-xl p-6 border border-border hover:border-primary/30 hover:glow-primary transition-all duration-500 group">
               <div className="flex items-center gap-3 mb-4">
                 <div className="text-primary">{group.icon}</div>
                 <h3 className="font-semibold text-foreground">{group.title}</h3>
@@ -47,13 +48,13 @@ const Skills = () => {
                   </span>
                 ))}
               </div>
-            </div>
+            </AnimatedSection>
           ))}
         </div>
 
         {/* Certifications & Soft skills */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div className="card-gradient rounded-xl p-6 border border-border">
+          <AnimatedSection className="card-gradient rounded-xl p-6 border border-border">
             <div className="flex items-center gap-3 mb-4">
               <Award className="w-5 h-5 text-accent" />
               <h3 className="font-semibold text-foreground">Certifications</h3>
@@ -66,9 +67,9 @@ const Skills = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </AnimatedSection>
 
-          <div className="card-gradient rounded-xl p-6 border border-border">
+          <AnimatedSection delay={0.1} className="card-gradient rounded-xl p-6 border border-border">
             <div className="flex items-center gap-3 mb-4">
               <Users className="w-5 h-5 text-accent" />
               <h3 className="font-semibold text-foreground">Soft Skills</h3>
@@ -84,7 +85,7 @@ const Skills = () => {
               <Globe className="w-4 h-4 text-primary" />
               <span>Anglais — B2</span>
             </div>
-          </div>
+          </AnimatedSection>
         </div>
       </div>
     </section>
