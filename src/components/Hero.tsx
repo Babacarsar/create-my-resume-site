@@ -2,6 +2,13 @@ import { Mail, MapPin, Phone, Github, Linkedin, ExternalLink } from "lucide-reac
 import profileImg from "@/assets/profile.png";
 
 const Hero = () => {
+  const linkedInUrl = "https://www.linkedin.com/in/babacar-sarr-a3888a247/";
+
+  const openExternalLink = (url: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center hero-gradient overflow-hidden">
       {/* Grid pattern overlay */}
@@ -49,7 +56,7 @@ const Hero = () => {
                 <Phone className="w-4 h-4 text-primary" />
                 Contact
               </a>
-              <a href="https://www.linkedin.com/in/babacar-sarr-a3888a247/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary text-secondary-foreground text-sm font-mono hover:glow-primary transition-all duration-300 hover:border-primary/50 border border-border">
+              <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" onClick={openExternalLink(linkedInUrl)} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary text-secondary-foreground text-sm font-mono hover:glow-primary transition-all duration-300 hover:border-primary/50 border border-border">
                 <Linkedin className="w-4 h-4 text-primary" />
                 LinkedIn
               </a>
