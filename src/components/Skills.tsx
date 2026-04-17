@@ -208,12 +208,16 @@ const Skills = () => {
 
               const content = (
                 <>
-                  <div className="shrink-0 w-9 h-9 rounded-md bg-background/60 border border-border/60 flex items-center justify-center group-hover/cert:border-accent/40 transition-colors">
+                  <div
+                    className={`shrink-0 ${
+                      c.badge ? "w-14 h-14 p-1 bg-white/95" : "w-9 h-9 bg-background/60"
+                    } rounded-md border border-border/60 flex items-center justify-center group-hover/cert:border-accent/40 transition-colors`}
+                  >
                     <img
-                      src={iconSrc}
-                      alt={c.issuer}
+                      src={c.badge ?? iconSrc}
+                      alt={c.badge ? `Badge ${c.name}` : c.issuer}
                       loading="lazy"
-                      className="w-5 h-5 object-contain"
+                      className={`object-contain ${c.badge ? "w-full h-full" : "w-5 h-5"}`}
                     />
                   </div>
                   <div className="flex-1 min-w-0">
