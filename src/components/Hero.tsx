@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone, Github, Linkedin, ExternalLink } from "lucide-react";
+import { Mail, MapPin, Phone, Github, Linkedin, ExternalLink, Download } from "lucide-react";
 import profileImg from "@/assets/profile.png";
 
 const Hero = () => {
@@ -41,6 +41,18 @@ const Hero = () => {
             <p className="text-muted-foreground leading-relaxed mb-8 max-w-xl animate-slide-up" style={{ animationDelay: '0.2s' }}>
               Passionné de traitement de données et visualisation. Spécialisé en Python, SQL, AWS et Power BI pour des projets à fort impact.
             </p>
+
+            {/* CTA: Download CV */}
+            <div className="flex justify-center lg:justify-start mb-6 animate-slide-up" style={{ animationDelay: '0.25s' }}>
+              <a
+                href="/CV_Babacar_Sarr.pdf"
+                download="CV_Babacar_Sarr.pdf"
+                className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all duration-300 glow-primary"
+              >
+                <Download className="w-5 h-5" />
+                Télécharger mon CV
+              </a>
+            </div>
 
             {/* Contact badges */}
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start animate-slide-up" style={{ animationDelay: '0.3s' }}>
