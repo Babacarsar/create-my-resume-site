@@ -36,8 +36,8 @@ const Hero = () => {
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4 animate-slide-up">
               Babacar <span className="text-gradient-primary">SARR</span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground font-light mb-6 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-              Data Engineer
+            <p className="text-xl md:text-2xl text-muted-foreground font-mono mb-6 animate-slide-up min-h-[2rem]" style={{ animationDelay: '0.1s' }}>
+              <TypingText text="Data Engineer" speed={90} startDelay={400} />
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8 max-w-xl animate-slide-up" style={{ animationDelay: '0.2s' }}>
               Passionné de traitement de données et visualisation. Spécialisé en Python, SQL, AWS et Power BI pour des projets à fort impact.
