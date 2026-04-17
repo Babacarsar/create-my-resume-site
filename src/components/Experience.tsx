@@ -29,6 +29,20 @@ const experiences: ExperienceItem[] = [
     stack: ["AWS", "DynamoDB", "Lambda", "Python", "QuickSight", "Nginx"],
   },
   {
+    title: "Développeur Front-End",
+    company: "Competences221",
+    location: "Sur site",
+    period: "Août 2024 – Sept 2024",
+    type: "Freelance",
+    tasks: [
+      "Conception de composants Angular dynamiques pour la plateforme d'offres d'emploi competences221.com",
+      "Interfaces responsives (desktop, mobile, tablette) avec Bootstrap et tests utilisateurs",
+      "Intégration d'API REST Node.js via HttpClient (GET, POST, PUT, DELETE) avec gestion des erreurs et états de chargement",
+      "Formulaires réactifs Angular (Reactive Forms) avec validations avancées (champs obligatoires, format email)",
+    ],
+    stack: ["Angular", "TypeScript", "Bootstrap", "Node.js", "REST API"],
+  },
+  {
     title: "Data Analyst",
     company: "Malick Galaxie Groupe",
     location: "Dakar",
