@@ -11,7 +11,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center hero-gradient overflow-hidden">
+    <section id="top" className="relative min-h-screen flex items-center justify-center hero-gradient overflow-hidden">
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: 'linear-gradient(hsl(170 80% 50%) 1px, transparent 1px), linear-gradient(90deg, hsl(170 80% 50%) 1px, transparent 1px)',
@@ -23,7 +23,7 @@ const Hero = () => {
           {/* Profile image */}
           <div className="relative">
             <div className="w-48 h-48 lg:w-64 lg:h-64 rounded-full overflow-hidden border-2 border-primary/30 animate-pulse-glow">
-              <img src={profileImg} alt="Babacar Sarr" className="w-full h-full object-cover" />
+              <img src={profileImg} alt="Babacar Sarr — Data Engineer Full Stack" className="w-full h-full object-cover" loading="eager" fetchPriority="high" decoding="async" />
             </div>
             <div className="absolute -bottom-2 -right-2 w-6 h-6 rounded-full bg-primary animate-pulse" />
           </div>
