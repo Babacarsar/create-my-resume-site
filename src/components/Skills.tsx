@@ -1,5 +1,6 @@
 import { Award, Users, Globe, ExternalLink } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
+import awsAcademyBadge from "@/assets/badges/aws-academy-graduate-data-engineering.png";
 
 
 interface SkillItem {
@@ -82,6 +83,8 @@ interface Certification {
   icon: string;
   /** Optional verification / credential URL */
   url?: string;
+  /** Optional official credential badge image (e.g. Credly) */
+  badge?: string;
 }
 
 const certifications: Certification[] = [
@@ -91,6 +94,7 @@ const certifications: Certification[] = [
     date: "Juil. 2025",
     icon: "logos:aws",
     url: "https://www.credly.com/badges/3d71ade0-6cc7-4728-a09e-53ff7a0a7b0d/linked_in_profile",
+    badge: awsAcademyBadge,
   },
   {
     name: "Devenir un expert de Power BI – La formation complète",
@@ -204,12 +208,16 @@ const Skills = () => {
 
               const content = (
                 <>
-                  <div className="shrink-0 w-9 h-9 rounded-md bg-background/60 border border-border/60 flex items-center justify-center group-hover/cert:border-accent/40 transition-colors">
+                  <div
+                    className={`shrink-0 ${
+                      c.badge ? "w-14 h-14 p-1 bg-white/95" : "w-9 h-9 bg-background/60"
+                    } rounded-md border border-border/60 flex items-center justify-center group-hover/cert:border-accent/40 transition-colors`}
+                  >
                     <img
-                      src={iconSrc}
-                      alt={c.issuer}
+                      src={c.badge ?? iconSrc}
+                      alt={c.badge ? `Badge ${c.name}` : c.issuer}
                       loading="lazy"
-                      className="w-5 h-5 object-contain"
+                      className={`object-contain ${c.badge ? "w-full h-full" : "w-5 h-5"}`}
                     />
                   </div>
                   <div className="flex-1 min-w-0">
