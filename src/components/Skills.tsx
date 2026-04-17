@@ -1,4 +1,4 @@
-import { Award, Users, Globe } from "lucide-react";
+import { Award, Users, Globe, ExternalLink } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 
 
