@@ -74,9 +74,22 @@ const skillGroups: SkillGroup[] = [
   },
 ];
 
-const certifications = [
-  "AWS Academy Graduate – Data Engineering",
-  "Devenir un expert Power BI (Udemy)",
+interface Certification {
+  name: string;
+  issuer: string;
+  date: string;
+}
+
+const certifications: Certification[] = [
+  { name: "AWS Academy Graduate – Data Engineering", issuer: "Amazon Web Services (AWS)", date: "Juil. 2025" },
+  { name: "Devenir un expert de Power BI – La formation complète", issuer: "Udemy", date: "Févr. 2025" },
+  { name: "Excel : Analyse de données avec Power Query (Microsoft 365)", issuer: "Birdify – LMSAFP", date: "Déc. 2024" },
+  { name: "Dataiku ML Practitioner", issuer: "Dataiku", date: "Déc. 2024" },
+  { name: "Dataiku Advanced Designer", issuer: "Dataiku", date: "Nov. 2024" },
+  { name: "Dataiku Core Designer", issuer: "Dataiku", date: "Nov. 2024" },
+  { name: "Apprendre l'analyse des données – Partie 2 : Étendre et appliquer les connaissances", issuer: "Birdify – LMSAFP", date: "Nov. 2024" },
+  { name: "Apprendre l'analyse des données : Fondements", issuer: "LinkedIn", date: "Nov. 2024" },
+  { name: "Les fondements du Data Engineering", issuer: "Birdify – LMSAFP", date: "2024" },
 ];
 
 const softSkills = ["Capacité d'écoute", "Esprit d'analyse", "Autonomie", "Savoir être"];
@@ -143,17 +156,28 @@ const Skills = () => {
         </div>
 
         {/* Certifications & Soft skills */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <AnimatedSection className="card-gradient rounded-xl p-6 border border-border">
-            <div className="flex items-center gap-3 mb-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          <AnimatedSection className="card-gradient rounded-xl p-6 border border-border lg:col-span-2">
+            <div className="flex items-center gap-3 mb-5">
               <Award className="w-5 h-5 text-accent" />
               <h3 className="font-semibold text-foreground">Certifications</h3>
+              <span className="ml-auto font-mono text-[10px] text-muted-foreground">
+                {String(certifications.length).padStart(2, "0")}
+              </span>
             </div>
-            <ul className="space-y-2">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {certifications.map((c, i) => (
-                <li key={i} className="flex gap-3 text-sm text-muted-foreground">
-                  <span className="text-accent mt-0.5">◆</span>
-                  {c}
+                <li
+                  key={i}
+                  className="group/cert flex gap-3 p-3 rounded-lg bg-secondary/30 border border-border/50 hover:border-accent/40 hover:bg-secondary/50 transition-all duration-300"
+                >
+                  <span className="text-accent mt-0.5 shrink-0 group-hover/cert:scale-110 transition-transform">◆</span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-foreground/90 leading-snug">{c.name}</p>
+                    <p className="text-[11px] font-mono text-muted-foreground mt-1">
+                      {c.issuer} · {c.date}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ul>
