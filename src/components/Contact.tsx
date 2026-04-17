@@ -50,15 +50,8 @@ const Contact = () => {
               <CalendarClock className="w-4 h-4 text-primary" />
               Réponse sous 24h
             </span>
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary text-secondary-foreground text-sm font-mono border border-border">
-              <MapPin className="w-4 h-4 text-primary" />
-              Île-de-France · Remote OK
-            </span>
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary text-secondary-foreground text-sm font-mono border border-border">
-              <CalendarClock className="w-4 h-4 text-primary" />
-              Réponse sous 24h
-            </span>
           </div>
+
 
           {/* Email row : mailto + copy */}
           <div className="inline-flex flex-col sm:flex-row items-stretch gap-2 mb-4 w-full sm:w-auto">
