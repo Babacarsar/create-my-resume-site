@@ -49,7 +49,7 @@ const Hero = () => {
                 <Phone className="w-4 h-4 text-primary" />
                 Contact
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary text-secondary-foreground text-sm font-mono hover:glow-primary transition-all duration-300 hover:border-primary/50 border border-border">
+              <a href="https://www.linkedin.com/in/babacar-sarr/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary text-secondary-foreground text-sm font-mono hover:glow-primary transition-all duration-300 hover:border-primary/50 border border-border">
                 <Linkedin className="w-4 h-4 text-primary" />
                 LinkedIn
               </a>
