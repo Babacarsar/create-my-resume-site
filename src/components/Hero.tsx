@@ -1,5 +1,6 @@
 import { Mail, MapPin, Phone, Github, Linkedin, ExternalLink, Download } from "lucide-react";
 import profileImg from "@/assets/profile.png";
+import TypingText from "@/components/TypingText";
 
 const Hero = () => {
   const linkedInUrl = "https://www.linkedin.com/in/babacar-sarr-a3888a247/";
