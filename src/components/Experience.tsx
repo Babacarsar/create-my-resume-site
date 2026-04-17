@@ -1,4 +1,5 @@
 import { Briefcase, Calendar } from "lucide-react";
+import AnimatedSection from "./AnimatedSection";
 
 interface ExperienceItem {
   title: string;
@@ -50,7 +51,7 @@ const Experience = () => {
 
         <div className="space-y-12">
           {experiences.map((exp, i) => (
-            <div key={i} className="relative pl-8 border-l-2 border-border hover:border-primary/50 transition-colors duration-500 group">
+            <AnimatedSection key={i} delay={i * 0.1} className="relative pl-8 border-l-2 border-border hover:border-primary/50 transition-colors duration-500 group">
               <div className="absolute left-0 top-0 w-3 h-3 -translate-x-[7px] rounded-full bg-primary/30 group-hover:bg-primary transition-colors border-2 border-background" />
               
               <div className="card-gradient rounded-xl p-6 md:p-8 border border-border group-hover:glow-primary transition-all duration-500">
@@ -77,7 +78,7 @@ const Experience = () => {
                   ))}
                 </ul>
               </div>
-            </div>
+            </AnimatedSection>
           ))}
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { Layers, BarChart3, ExternalLink } from "lucide-react";
+import AnimatedSection from "./AnimatedSection";
 
 interface Project {
   title: string;
@@ -45,7 +46,7 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {projects.map((project, i) => (
-            <div key={i} className="card-gradient rounded-xl border border-border hover:border-primary/30 hover:glow-primary transition-all duration-500 group overflow-hidden">
+            <AnimatedSection key={i} delay={i * 0.1} className="card-gradient rounded-xl border border-border hover:border-primary/30 hover:glow-primary transition-all duration-500 group overflow-hidden">
               {/* Header bar */}
               <div className="px-6 py-4 border-b border-border flex items-center gap-3">
                 <div className="flex gap-1.5">
@@ -79,7 +80,7 @@ const Projects = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </AnimatedSection>
           ))}
         </div>
       </div>
