@@ -24,8 +24,6 @@ const projects: Project[] = [
       "Monitoring CloudWatch, visualisation via Power BI et QGIS",
     ],
     tags: ["Databricks", "Spark", "AWS Glue", "S3", "PostgreSQL", "Power BI", "QGIS"],
-    github: "https://github.com",
-    demo: "https://example.com",
   },
   {
     title: "DataViz – Analyse d'Attrition Clients",
@@ -38,8 +36,42 @@ const projects: Project[] = [
       "Recommandations : fidélisation ciblée, amélioration du support",
     ],
     tags: ["Power BI", "Data Visualization", "KPI", "Analyse"],
-    github: "https://github.com",
-    demo: "https://example.com",
+  },
+  {
+    title: "Pipeline ETL & Analyse OLAP – Dataset Movies",
+    period: "Avril 2025 · EPSI",
+    description:
+      "Pipeline ETL complet sur un dataset de films avec stockage relationnel et cube OLAP multidimensionnel pour l'analyse interactive.",
+    tasks: [
+      "Collecte, nettoyage et feature engineering sous Dataiku (YEAR → START_YEAR / END_YEAR)",
+      "Chargement des données agrégées dans PostgreSQL",
+      "Cube OLAP Atoti avec hiérarchies et widgets interactifs",
+    ],
+    tags: ["Dataiku", "PostgreSQL", "Atoti", "ETL", "OLAP"],
+  },
+  {
+    title: "Architecture Décisionnelle – VTC New York",
+    period: "Oct 2024 – Déc 2024 · EPSI",
+    description:
+      "Data Lake et entrepôt décisionnel sur les trajets VTC de New York, orchestrés et automatisés mensuellement.",
+    tasks: [
+      "Ingestion Python des fichiers Parquet vers un Data Lake MinIO",
+      "Pipeline ETL Amphi.ai vers PostgreSQL et Data Mart en flocon",
+      "Dashboard Power BI et orchestration mensuelle via Airflow (DAG)",
+    ],
+    tags: ["Python", "MinIO", "Airflow", "PostgreSQL", "Power BI", "Data Lake"],
+  },
+  {
+    title: "Application de Gestion de Notes",
+    period: "Unipro",
+    description:
+      "Application web de gestion des notes étudiantes : saisie, calcul de moyennes, rapports et suivi de progression.",
+    tasks: [
+      "Saisie des notes par cours et calcul automatique des moyennes",
+      "Génération de rapports personnalisés et notifications utilisateurs",
+      "Interface intuitive pour enseignants et administrateurs",
+    ],
+    tags: ["PHP", "MySQL", "phpMyAdmin", "npm", "Web"],
   },
 ];
 
