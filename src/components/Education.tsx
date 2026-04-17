@@ -9,6 +9,12 @@ const education = [
     period: "2024 – 2026",
   },
   {
+    degree: "Master 1 Génie Logiciel",
+    school: "Groupe ISI",
+    location: "Dakar",
+    period: "Nov 2023 – Août 2024",
+  },
+  {
     degree: "Licence Génie Logiciel",
     school: "Unipro",
     location: "Dakar",
