@@ -1,5 +1,6 @@
 import { Award, Users, Globe, ExternalLink } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
+import awsAcademyBadge from "@/assets/badges/aws-academy-graduate-data-engineering.png";
 
 
 interface SkillItem {
@@ -82,6 +83,8 @@ interface Certification {
   icon: string;
   /** Optional verification / credential URL */
   url?: string;
+  /** Optional official credential badge image (e.g. Credly) */
+  badge?: string;
 }
 
 const certifications: Certification[] = [
@@ -91,6 +94,7 @@ const certifications: Certification[] = [
     date: "Juil. 2025",
     icon: "logos:aws",
     url: "https://www.credly.com/badges/3d71ade0-6cc7-4728-a09e-53ff7a0a7b0d/linked_in_profile",
+    badge: awsAcademyBadge,
   },
   {
     name: "Devenir un expert de Power BI – La formation complète",
