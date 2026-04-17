@@ -37,10 +37,10 @@ const Hero = () => {
               Babacar <span className="text-gradient-primary">SARR</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground font-mono mb-6 animate-slide-up min-h-[2rem]" style={{ animationDelay: '0.1s' }}>
-              <TypingText text="Data Engineer" speed={90} startDelay={400} />
+              <TypingText text="Data Engineer Full Stack" speed={90} startDelay={400} />
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8 max-w-xl animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              Passionné de traitement de données et visualisation. Spécialisé en Python, SQL, AWS et Power BI pour des projets à fort impact.
+              Data Engineer Full Stack — de l'ingestion à la visualisation. Pipelines ETL, Big Data et Cloud AWS, APIs et dashboards. Spécialisé en Python, SQL, Spark, AWS et Power BI.
             </p>
 
             {/* CTA: Download CV */}
