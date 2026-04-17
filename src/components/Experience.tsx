@@ -49,10 +49,9 @@ const Experience = () => {
   return (
     <section id="experience" className="py-24 relative">
       <div className="container mx-auto px-6">
-        <div className="flex items-center gap-3 mb-16">
-          <span className="font-mono text-primary text-sm">02.</span>
-          <h2 className="text-3xl md:text-4xl font-bold">Expériences</h2>
-          <div className="flex-1 h-px bg-border ml-4" />
+        <div className="flex items-center gap-4 mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Expériences</h2>
+          <div className="flex-1 h-px bg-border" />
         </div>
 
         {/* Timeline */}
