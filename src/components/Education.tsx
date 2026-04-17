@@ -31,7 +31,7 @@ const Education = () => {
           <div className="flex-1 h-px bg-border" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {education.map((edu, i) => (
             <AnimatedSection key={i} delay={i * 0.1} className="card-gradient rounded-xl p-6 border border-border hover:border-accent/30 hover:glow-accent transition-all duration-500 group">
               <GraduationCap className="w-8 h-8 text-accent mb-4" />
