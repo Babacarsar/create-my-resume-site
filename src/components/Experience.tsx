@@ -1,9 +1,13 @@
-import { Briefcase, Calendar, MapPin, Building2 } from "lucide-react";
+import { Calendar, MapPin, Building2 } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
+import woodooLogo from "@/assets/logos/woodoo.png";
+import competences221Logo from "@/assets/logos/competences221.png";
+import malickGalaxieLogo from "@/assets/logos/malick-galaxie.png";
 
 interface ExperienceItem {
   title: string;
   company: string;
+  logo: string;
   location: string;
   period: string;
   type: string;
@@ -15,6 +19,7 @@ const experiences: ExperienceItem[] = [
   {
     title: "Data Engineer Full Stack",
     company: "Woodoo",
+    logo: woodooLogo,
     location: "Paris",
     period: "Sept 2025 – Sept 2026",
     type: "Alternance",
@@ -31,6 +36,7 @@ const experiences: ExperienceItem[] = [
   {
     title: "Développeur Front-End",
     company: "Competences221",
+    logo: competences221Logo,
     location: "Sur site",
     period: "Août 2024 – Sept 2024",
     type: "Freelance",
@@ -45,6 +51,7 @@ const experiences: ExperienceItem[] = [
   {
     title: "Data Analyst",
     company: "Malick Galaxie Groupe",
+    logo: malickGalaxieLogo,
     location: "Dakar",
     period: "Nov 2023 – Mai 2024",
     type: "Stage",
@@ -83,11 +90,18 @@ const Experience = () => {
                 delay={i * 0.1}
                 className="group relative pl-14 md:pl-20"
               >
-                {/* Timeline node */}
+                {/* Timeline node — company logo */}
                 <div className="absolute left-0 top-6 flex items-center justify-center">
                   <span className="absolute w-9 h-9 md:w-12 md:h-12 rounded-full bg-primary/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="relative w-9 h-9 md:w-12 md:h-12 rounded-full bg-background border-2 border-primary/40 group-hover:border-primary flex items-center justify-center text-primary transition-all duration-500 group-hover:scale-110">
-                    <Briefcase className="w-4 h-4 md:w-5 md:h-5" strokeWidth={1.75} />
+                  <div className="relative w-9 h-9 md:w-12 md:h-12 rounded-full bg-background border-2 border-primary/40 group-hover:border-primary flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:scale-110">
+                    <img
+                      src={exp.logo}
+                      alt={`Logo ${exp.company}`}
+                      loading="lazy"
+                      width={48}
+                      height={48}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
 
