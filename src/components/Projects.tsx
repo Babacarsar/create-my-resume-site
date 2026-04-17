@@ -1,4 +1,4 @@
-import { ArrowUpRight, Folder } from "lucide-react";
+import { ArrowUpRight, Folder, Github, ExternalLink } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 
 interface Project {
@@ -7,6 +7,8 @@ interface Project {
   description: string;
   tasks: string[];
   tags: string[];
+  github?: string;
+  demo?: string;
 }
 
 const projects: Project[] = [
@@ -21,6 +23,8 @@ const projects: Project[] = [
       "Monitoring CloudWatch, visualisation via Power BI et QGIS",
     ],
     tags: ["Databricks", "Spark", "AWS Glue", "S3", "PostgreSQL", "Power BI", "QGIS"],
+    github: "https://github.com",
+    demo: "https://example.com",
   },
   {
     title: "DataViz – Analyse d'Attrition Clients",
@@ -33,6 +37,8 @@ const projects: Project[] = [
       "Recommandations : fidélisation ciblée, amélioration du support",
     ],
     tags: ["Power BI", "Data Visualization", "KPI", "Analyse"],
+    github: "https://github.com",
+    demo: "https://example.com",
   },
 ];
 
@@ -75,7 +81,33 @@ const Projects = () => {
                       </span>
                     </div>
                   </div>
-                  <ArrowUpRight className="w-5 h-5 text-muted-foreground/60 group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300" />
+                  <div className="flex items-center gap-1">
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Code source GitHub de ${project.title}`}
+                        onClick={(e) => e.stopPropagation()}
+                        className="w-9 h-9 rounded-lg flex items-center justify-center text-muted-foreground/70 hover:text-primary hover:bg-primary/10 transition-colors duration-300"
+                      >
+                        <Github className="w-4 h-4" strokeWidth={1.75} />
+                      </a>
+                    )}
+                    {project.demo && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Démo live de ${project.title}`}
+                        onClick={(e) => e.stopPropagation()}
+                        className="w-9 h-9 rounded-lg flex items-center justify-center text-muted-foreground/70 hover:text-primary hover:bg-primary/10 transition-colors duration-300"
+                      >
+                        <ExternalLink className="w-4 h-4" strokeWidth={1.75} />
+                      </a>
+                    )}
+                    <ArrowUpRight className="w-5 h-5 text-muted-foreground/60 group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300" />
+                  </div>
                 </div>
 
                 {/* Title */}
