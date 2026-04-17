@@ -1,4 +1,4 @@
-import { Layers, BarChart3, ExternalLink } from "lucide-react";
+import { ArrowUpRight, Folder } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 
 interface Project {
@@ -13,7 +13,8 @@ const projects: Project[] = [
   {
     title: "Plateforme Big Data – Météo & Pollution",
     period: "Déc 2024 – Juin 2025",
-    description: "Pipeline de données complet avec modélisation prédictive pour la prédiction de température.",
+    description:
+      "Pipeline de données complet avec modélisation prédictive pour la prédiction de température.",
     tasks: [
       "Modélisation prédictive sous Databricks (Spark MLlib)",
       "Pipeline automatisé : ingestion AWS Glue, stockage S3, base PostgreSQL (RDS)",
@@ -24,7 +25,8 @@ const projects: Project[] = [
   {
     title: "DataViz – Analyse d'Attrition Clients",
     period: "Avril 2025",
-    description: "Dashboard interactif Power BI pour identifier les causes de résiliation client.",
+    description:
+      "Dashboard interactif Power BI pour identifier les causes de résiliation client.",
     tasks: [
       "Suivi KPI : taux d'attrition, revenus perdus, segments à risque",
       "Analyse des facteurs : contrat, âge, appels SAV",
@@ -46,35 +48,68 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {projects.map((project, i) => (
-            <AnimatedSection key={i} delay={i * 0.1} className="card-gradient rounded-xl border border-border hover:border-primary/30 hover:glow-primary transition-all duration-500 group overflow-hidden">
-              {/* Header bar */}
-              <div className="px-6 py-4 border-b border-border flex items-center gap-3">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-destructive/60" />
-                  <div className="w-3 h-3 rounded-full bg-accent/60" />
-                  <div className="w-3 h-3 rounded-full bg-primary/60" />
-                </div>
-                <span className="font-mono text-xs text-muted-foreground">{project.period}</span>
-              </div>
+            <AnimatedSection
+              key={i}
+              delay={i * 0.1}
+              className="group relative card-gradient rounded-2xl border border-border hover:border-primary/40 transition-all duration-500 overflow-hidden hover:-translate-y-1"
+            >
+              {/* Subtle top gradient accent */}
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+              {/* Decorative blurred glow */}
+              <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-primary/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+              <div className="relative p-7 md:p-8">
+                {/* Header: folder icon + index + arrow */}
+                <div className="flex items-start justify-between mb-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary/15 group-hover:border-primary/40 transition-all duration-500">
+                      <Folder className="w-5 h-5" strokeWidth={1.75} />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                        Projet · {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="font-mono text-xs text-muted-foreground/80">
+                        {project.period}
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowUpRight className="w-5 h-5 text-muted-foreground/60 group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300" />
+                </div>
+
+                {/* Title */}
+                <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3 leading-tight tracking-tight group-hover:text-primary transition-colors duration-300">
                   {project.title}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
 
-                <ul className="space-y-1.5 mb-5">
+                {/* Description */}
+                <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                  {project.description}
+                </p>
+
+                {/* Divider */}
+                <div className="h-px bg-gradient-to-r from-border via-border to-transparent mb-5" />
+
+                {/* Tasks */}
+                <ul className="space-y-2.5 mb-6">
                   {project.tasks.map((task, j) => (
-                    <li key={j} className="flex gap-2 text-sm text-muted-foreground">
-                      <span className="text-primary shrink-0">▸</span>
-                      {task}
+                    <li key={j} className="flex gap-3 text-sm text-muted-foreground/90 leading-relaxed">
+                      <span className="font-mono text-primary/70 text-xs mt-1 shrink-0">
+                        {String(j + 1).padStart(2, "0")}
+                      </span>
+                      <span>{task}</span>
                     </li>
                   ))}
                 </ul>
 
-                <div className="flex flex-wrap gap-2">
+                {/* Tags */}
+                <div className="flex flex-wrap gap-1.5 pt-2">
                   {project.tags.map((tag, j) => (
-                    <span key={j} className="px-2.5 py-1 rounded-md bg-primary/10 text-primary text-xs font-mono border border-primary/20">
+                    <span
+                      key={j}
+                      className="px-2.5 py-1 rounded-full bg-secondary/60 text-muted-foreground text-[11px] font-mono border border-border/60 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors duration-300"
+                    >
                       {tag}
                     </span>
                   ))}
