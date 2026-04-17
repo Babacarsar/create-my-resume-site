@@ -1,4 +1,4 @@
-import { ArrowUpRight, Folder } from "lucide-react";
+import { ArrowUpRight, Folder, Github, ExternalLink } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 
 interface Project {
@@ -7,6 +7,8 @@ interface Project {
   description: string;
   tasks: string[];
   tags: string[];
+  github?: string;
+  demo?: string;
 }
 
 const projects: Project[] = [
@@ -21,6 +23,8 @@ const projects: Project[] = [
       "Monitoring CloudWatch, visualisation via Power BI et QGIS",
     ],
     tags: ["Databricks", "Spark", "AWS Glue", "S3", "PostgreSQL", "Power BI", "QGIS"],
+    github: "https://github.com",
+    demo: "https://example.com",
   },
   {
     title: "DataViz – Analyse d'Attrition Clients",
@@ -33,6 +37,8 @@ const projects: Project[] = [
       "Recommandations : fidélisation ciblée, amélioration du support",
     ],
     tags: ["Power BI", "Data Visualization", "KPI", "Analyse"],
+    github: "https://github.com",
+    demo: "https://example.com",
   },
 ];
 
