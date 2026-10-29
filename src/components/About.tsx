@@ -7,15 +7,15 @@ const pillars = [
     subtitle: "Ingestion & Stockage",
     description:
       "Pipelines ETL/ELT robustes, traitements Big Data distribués et architectures data lake/warehouse sur le cloud.",
-    tags: ["Python", "SQL", "Spark", "Airflow", "AWS S3", "Redshift"],
+    tags: ["Python", "SQL", "DynamoDB", "AWS S3", "Spark", "Airflow"],
   },
   {
     icon: Cable,
     title: "APIs & Services",
     subtitle: "Exposition & Intégration",
     description:
-      "Conception d'APIs REST performantes et de microservices conteneurisés pour exposer la donnée aux applications métier.",
-    tags: ["FastAPI", "REST", "Docker", "PostgreSQL", "CI/CD"],
+      "Conception d'APIs REST performantes, conteneurisées et déployées sur le cloud pour exposer la donnée aux applications métier.",
+    tags: ["Flask", "FastAPI", "Docker", "ECS", "Terraform", "CI/CD"],
   },
   {
     icon: BarChart3,
@@ -23,7 +23,7 @@ const pillars = [
     subtitle: "Visualisation & Décision",
     description:
       "Tableaux de bord interactifs et visualisations analytiques pour transformer la donnée en décisions métier actionnables.",
-    tags: ["Power BI", "Streamlit", "Plotly", "DAX", "Storytelling"],
+    tags: ["React", "Power BI", "QuickSight", "Plotly", "DAX"],
   },
 ];
 

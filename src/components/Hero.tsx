@@ -1,5 +1,5 @@
 import { Mail, MapPin, Phone, Github, Linkedin, ExternalLink, Download } from "lucide-react";
-import profileImg from "@/assets/profile.png";
+import profileImg from "@/assets/profile.jpg";
 import TypingText from "@/components/TypingText";
 
 const Hero = () => {
@@ -40,11 +40,13 @@ const Hero = () => {
               <TypingText text="Data Engineer Full Stack" speed={90} startDelay={400} />
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8 max-w-xl animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              Data Engineer <span className="text-primary font-semibold">Full Stack</span> — je couvre toute la chaîne de la donnée :
-              <span className="text-foreground"> back data</span> (pipelines ETL/ELT, Spark, Airflow, data lakes AWS S3/Redshift),
-              <span className="text-foreground"> APIs</span> (FastAPI, REST, microservices Dockerisés) et
-              <span className="text-foreground"> dashboards</span> (Power BI, Streamlit, visualisations interactives).
-              De l'ingestion brute à la décision métier, je livre des produits data end-to-end.
+              Data Engineer <span className="text-primary font-semibold">Full Stack</span> — je construis et fais tourner en production
+              la plateforme data d'une usine :
+              <span className="text-foreground"> données</span> (pipelines ETL Python, DynamoDB, S3),
+              <span className="text-foreground"> applications</span> (API Flask, React),
+              <span className="text-foreground"> infrastructure</span> (AWS ECS, Terraform, CI/CD) et
+              <span className="text-foreground"> IA</span> (agent Claude sur les données).
+              De la donnée brute à la décision métier, je livre des produits data end-to-end.
             </p>
 
             {/* CTA: Download CV */}
