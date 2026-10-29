@@ -37,7 +37,7 @@ const Contact = () => {
             {"> "}contact.open()
           </p>
           <p className="text-muted-foreground mb-8 leading-relaxed text-lg">
-            Actuellement en alternance, je reste ouvert aux échanges et opportunités. N'hésitez pas à me contacter !
+            En poste chez Woodoo (CDD), je reste ouvert aux échanges et aux opportunités en CDI. N'hésitez pas à me contacter !
           </p>
 
           {/* Status badges */}

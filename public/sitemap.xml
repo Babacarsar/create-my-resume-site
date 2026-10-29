@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://create-my-resume-site.lovable.app/</loc>
+    <loc>https://portofolio-babacar.vercel.app/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://create-my-resume-site.lovable.app/#about</loc>
+    <loc>https://portofolio-babacar.vercel.app/#about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://create-my-resume-site.lovable.app/#experience</loc>
+    <loc>https://portofolio-babacar.vercel.app/#experience</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://create-my-resume-site.lovable.app/#projects</loc>
+    <loc>https://portofolio-babacar.vercel.app/#projects</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://create-my-resume-site.lovable.app/#skills</loc>
+    <loc>https://portofolio-babacar.vercel.app/#skills</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://create-my-resume-site.lovable.app/#education</loc>
+    <loc>https://portofolio-babacar.vercel.app/#education</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://create-my-resume-site.lovable.app/#contact</loc>
+    <loc>https://portofolio-babacar.vercel.app/#contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

@@ -3,6 +3,15 @@ import AnimatedSection from "./AnimatedSection";
 import awsAcademyBadge from "@/assets/badges/aws-academy-graduate-data-engineering.png";
 
 
+/** Icône Iconify « prefix:name » servie depuis public/icons/prefix-name.svg.
+ * Les SVG sont copiés dans le site (icônes monochromes déjà teintées de l'accent #14b8a6) :
+ * plus de dépendance à api.iconify.design, dont l'URL mal formée cassait toutes les icônes.
+ * Nouvelle icône : ajouter le fichier SVG correspondant dans public/icons/. */
+const iconUrl = (icon: string) => {
+  const [prefix, name] = icon.split(":");
+  return `/icons/${prefix}-${name}.svg`;
+};
+
 interface SkillItem {
   name: string;
   /** Iconify icon identifier, e.g. "logos:aws" */
@@ -22,14 +31,18 @@ const skillGroups: SkillGroup[] = [
       { name: "SQL Server", icon: "devicon:microsoftsqlserver" },
       { name: "MySQL", icon: "logos:mysql" },
       { name: "DynamoDB", icon: "logos:aws-dynamodb" },
-      { name: "SQLAlchemy", icon: "devicon:sqlalchemy" },
+      { name: "SQLAlchemy", icon: "simple-icons:sqlalchemy" },
     ],
   },
   {
     title: "Cloud AWS",
     items: [
-      { name: "AWS", icon: "logos:aws" },
+      { name: "ECS Fargate", icon: "logos:aws-fargate" },
       { name: "S3", icon: "logos:aws-s3" },
+      { name: "CloudFront", icon: "logos:aws-cloudfront" },
+      { name: "WAF", icon: "logos:aws-waf" },
+      { name: "IAM", icon: "logos:aws-iam" },
+      { name: "Secrets Manager", icon: "logos:aws-secrets-manager" },
       { name: "Lambda", icon: "logos:aws-lambda" },
       { name: "Glue", icon: "logos:aws-glue" },
       { name: "EC2", icon: "logos:aws-ec2" },
@@ -42,13 +55,22 @@ const skillGroups: SkillGroup[] = [
       { name: "Python", icon: "logos:python" },
       { name: "SQL", icon: "vscode-icons:file-type-sql" },
       { name: "JavaScript", icon: "logos:javascript" },
+      { name: "TypeScript", icon: "logos:typescript-icon" },
+    ],
+  },
+  {
+    title: "Frontend & IA",
+    items: [
+      { name: "React", icon: "logos:react" },
+      { name: "Claude API", icon: "logos:claude-icon" },
+      { name: "Plotly", icon: "simple-icons:plotly" },
     ],
   },
   {
     title: "Backend / API",
     items: [
       { name: "FastAPI", icon: "logos:fastapi-icon" },
-      { name: "Flask", icon: "logos:flask" },
+      { name: "Flask", icon: "simple-icons:flask" },
       { name: "REST API", icon: "logos:openapi-icon" },
       { name: "JWT", icon: "logos:jwt-icon" },
     ],
@@ -56,6 +78,7 @@ const skillGroups: SkillGroup[] = [
   {
     title: "Data Engineering",
     items: [
+      { name: "Pandas", icon: "logos:pandas-icon" },
       { name: "Apache Spark", icon: "logos:apache-spark" },
       { name: "Databricks", icon: "simple-icons:databricks" },
       { name: "Apache Airflow", icon: "logos:airflow-icon" },
@@ -67,8 +90,10 @@ const skillGroups: SkillGroup[] = [
     title: "DevOps",
     items: [
       { name: "Git", icon: "logos:git-icon" },
-      { name: "GitHub", icon: "logos:github-icon" },
+      { name: "GitHub", icon: "simple-icons:github" },
       { name: "Docker", icon: "logos:docker-icon" },
+      { name: "Terraform", icon: "logos:terraform-icon" },
+      { name: "GitLab CI", icon: "logos:gitlab-icon" },
       { name: "Nginx", icon: "logos:nginx" },
       { name: "Linux", icon: "logos:linux-tux" },
     ],
@@ -100,7 +125,7 @@ const certifications: Certification[] = [
     name: "Devenir un expert de Power BI – La formation complète",
     issuer: "Udemy",
     date: "Févr. 2025",
-    icon: "logos:udemy",
+    icon: "simple-icons:udemy",
     url: "https://www.udemy.com/certificate/UC-b1419a6e-5e1e-4fc2-b1a1-3da8a089a717/",
   },
   { name: "Excel : Analyse de données avec Power Query (Microsoft 365)", issuer: "Birdify – LMSAFP", date: "Déc. 2024", icon: "simple-icons:microsoftexcel" },
@@ -124,18 +149,11 @@ const certifications: Certification[] = [
   { name: "Les fondements du Data Engineering", issuer: "Birdify – LMSAFP", date: "2024", icon: "simple-icons:microsoftexcel" },
 ];
 
-const softSkills = ["Capacité d'écoute", "Esprit d'analyse", "Autonomie", "Savoir être"];
+const softSkills = ["Capacité d'écoute", "Esprit d'analyse", "Autonomie", "Pédagogie", "Sens du métier"];
 
 const SkillLogo = ({ item }: { item: SkillItem }) => {
-  // Iconify renders monochrome icons (simple-icons, devicon families) using currentColor.
-  // We tint them with the primary accent so they harmonize with the dark theme.
-  const isMonochrome =
-    item.icon.startsWith("simple-icons:") ||
-    item.icon.startsWith("devicon:") ||
-    item.icon.startsWith("vscode-icons:");
-  const src = isMonochrome
-    ? `https://api.iconify.design/${item.icon}.svg?color=%2314b8a6`
-    : `https://api.iconify.design/${item.icon}.svg`;
+  // Icônes monochromes (simple-icons, devicon…) teintées de l'accent pour le thème sombre
+  const src = iconUrl(item.icon);
 
   return (
     <div className="group/logo flex flex-col items-center gap-2">
@@ -198,13 +216,7 @@ const Skills = () => {
           </div>
           <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {certifications.map((c, i) => {
-              const isMonochrome =
-                c.icon.startsWith("simple-icons:") ||
-                c.icon.startsWith("devicon:") ||
-                c.icon.startsWith("vscode-icons:");
-              const iconSrc = isMonochrome
-                ? `https://api.iconify.design/${c.icon}.svg?color=%2314b8a6`
-                : `https://api.iconify.design/${c.icon}.svg`;
+              const iconSrc = iconUrl(c.icon);
 
               const content = (
                 <>

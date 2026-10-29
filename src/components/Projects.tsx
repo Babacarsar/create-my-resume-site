@@ -10,9 +10,33 @@ interface Project {
   tags: string[];
   github?: string;
   demo?: string;
+  /** Projet phare : carte sur toute la largeur, résultats chiffrés mis en avant */
+  featured?: boolean;
+  metrics?: { value: string; label: string }[];
 }
 
 const projects: Project[] = [
+  {
+    title: "Woodoo App – Plateforme de traçabilité industrielle",
+    period: "Depuis sept. 2025 · Woodoo",
+    description:
+      "Application en production qui suit chaque panneau de bois de la réception des matières jusqu'au client : logistique, production, contrôles qualité et pilotage, pour les équipes de l'usine.",
+    tasks: [
+      "Architecture : React (60+ écrans) → API Flask sur ECS Fargate → DynamoDB, diffusion CloudFront + WAF, infrastructure Terraform et CI/CD GitLab",
+      "Traçabilité de bout en bout par QR codes : lots, plis, stacks, presses, contrôles, avec recherche de l'historique complet d'un stack",
+      "Données fiables : règles de validation à la saisie (ex. alerte densité incohérente), détection des mesures aberrantes, environnement de recette",
+      "Performance : décodage DynamoDB direct et scans parallèles, cache de réponses invalidé à chaque écriture, code front chargé à la demande",
+      "Agent IA « Bernadette » (API Claude) : questions en langage naturel sur les données de production, graphiques et exports, accès en lecture seule garanti par IAM",
+    ],
+    tags: ["React", "Flask", "DynamoDB", "ECS Fargate", "Terraform", "CloudFront", "Docker", "Claude API"],
+    featured: true,
+    metrics: [
+      { value: "30 s → 0,2 s", label: "temps des dashboards" },
+      { value: "5×", label: "lectures DynamoDB plus rapides" },
+      { value: "50", label: "utilisateurs simultanés, 0 erreur" },
+      { value: "2,5 Mo → 350 Ko", label: "poids initial du front" },
+    ],
+  },
   {
     title: "Plateforme Big Data – Météo & Pollution",
     period: "Déc 2024 – Juin 2025",
@@ -89,7 +113,9 @@ const Projects = () => {
             <AnimatedSection
               key={i}
               delay={i * 0.1}
-              className="group relative card-gradient rounded-2xl border border-border hover:border-primary/40 transition-all duration-500 overflow-hidden hover:-translate-y-1"
+              className={`group relative card-gradient rounded-2xl border transition-all duration-500 overflow-hidden hover:-translate-y-1 ${
+                project.featured ? "lg:col-span-2 border-primary/40 hover:border-primary/60" : "border-border hover:border-primary/40"
+              }`}
             >
               {/* Subtle top gradient accent */}
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -106,7 +132,7 @@ const Projects = () => {
                     </div>
                     <div className="flex flex-col">
                       <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                        Projet · {String(i + 1).padStart(2, "0")}
+                        {project.featured ? "Projet phare · en production" : `Projet · ${String(i).padStart(2, "0")}`}
                       </span>
                       <span className="font-mono text-xs text-muted-foreground/80">
                         {project.period}
@@ -153,7 +179,9 @@ const Projects = () => {
                           </TooltipContent>
                         </Tooltip>
                       )}
-                      <ArrowUpRight className="w-5 h-5 text-muted-foreground/60 group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300" />
+                      {(project.github || project.demo) && (
+                        <ArrowUpRight className="w-5 h-5 text-muted-foreground/60 group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300" />
+                      )}
                     </div>
                   </TooltipProvider>
                 </div>
@@ -167,6 +195,18 @@ const Projects = () => {
                 <p className="text-sm text-muted-foreground leading-relaxed mb-6">
                   {project.description}
                 </p>
+
+                {/* Résultats chiffrés (projet phare) */}
+                {project.metrics && (
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+                    {project.metrics.map((m, j) => (
+                      <div key={j} className="rounded-xl border border-primary/20 bg-primary/5 px-4 py-3">
+                        <p className="font-mono text-lg md:text-xl font-bold text-primary leading-tight">{m.value}</p>
+                        <p className="text-[11px] text-muted-foreground mt-1 leading-snug">{m.label}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
 
                 {/* Divider */}
                 <div className="h-px bg-gradient-to-r from-border via-border to-transparent mb-5" />
